@@ -10,7 +10,7 @@ class Directory extends Component {
         error: null,
     };
 
-    
+
     componentDidMount() {
         API.GetEmployees()
             .then(res => {
@@ -20,30 +20,38 @@ class Directory extends Component {
                 console.log("this is update state")
                 console.log(this.state.results)
                 // this.setState({ results: res.data.results })
-               
-            // .catch(err => console.log(err));
-            // const results = res.data.results.map(obj => obj.data);
-            // this.setState({ results });
-        }
+
+                // .catch(err => console.log(err));
+                // const results = res.data.results.map(obj => obj.data);
+                // this.setState({ results });
+            }
 
 
-     
-    )}
+
+            )
+    }
 
 
     render() {
         return (
-        <div>
-            <p> name:  {this.state.results.map(item=>{
-                return <p>{item.email}</p>
-            })}
-            </p>
+            <div>
+                <div> {this.state.results.map(item => {
+                    return <div 
+                    key={item.phone}>
+                    <div> name: {item.name.first} {item.name.last} </div>
+                    email: {item.email}
+                    <div>{item.picture.thumbnail}</div>
+                    phone: {item.phone} <div>DOB:{item.dob.date}</div>
+                    </div>
+                })}
+
+                </div>
 
 
-        </div>
-       
+            </div>
+
         );
-    };   
+    };
 }
 
 
