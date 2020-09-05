@@ -12,23 +12,22 @@ class Directory extends Component {
 
 
     componentDidMount() {
-        API.GetEmployees()
+        // API.GetEmployees()
+        //     .then(res => {
+        //         console.log(res.data.results)
+        //         // const results = res.data.results.map(obj => obj.data);
+        //         this.setState({ results: res.data.results });
+        //         console.log("this is update state")
+        //         console.log(this.state.results)
+        //     })
+        API.GetMultiEmployees()
             .then(res => {
                 console.log(res.data.results)
-                // const results = res.data.results.map(obj => obj.data);
                 this.setState({ results: res.data.results });
-                console.log("this is update state")
+                console.log("state updated")
                 console.log(this.state.results)
-                // this.setState({ results: res.data.results })
 
-                // .catch(err => console.log(err));
-                // const results = res.data.results.map(obj => obj.data);
-                // this.setState({ results });
-            }
-
-
-
-            )
+            })
     }
 
 
