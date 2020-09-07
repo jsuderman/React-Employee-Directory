@@ -8,7 +8,7 @@ export default {
     },
 
     GetMultiEmployees: function() {
-        return axios.get('https://randomuser.me/api/?results=15');
+        return axios.get('https://randomuser.me/api/?results=10');
     }
     
 
