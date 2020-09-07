@@ -2,7 +2,7 @@ import React from 'react';
 import "./style.css";
 
 
-function EmployeeDataCard() {
+function EmployeeDataCard(props) {
     return (
         <div>
             <table class="table table-striped">
@@ -10,8 +10,8 @@ function EmployeeDataCard() {
                 <tbody>
                     <tr>
                         <th scope="row"></th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td>{props.name}</td>
+                        <td>{props.phone}</td>
                         <td>@mdo</td>
                         <td>Otto</td>
                         <td>@mdo</td>
