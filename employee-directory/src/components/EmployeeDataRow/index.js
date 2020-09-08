@@ -1,10 +1,10 @@
 import React from 'react';
 import "./style.css"
 
-function EmployeeDataRow() {
+function EmployeeDataRow(props) {
     return (
         <div>
-            <table cellPadding={0} cellSpacing={0} class="tables table-striped">
+            <table cellPadding={0} cellSpacing={0}  class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Image</th>

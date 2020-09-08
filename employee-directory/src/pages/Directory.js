@@ -10,6 +10,7 @@ export default class Directory extends React.Component {
             search: "",
             loading: true,
             employees: [],
+            matchedEmployee: [],
         };
     }
     async componentDidMount() {
@@ -32,66 +33,50 @@ export default class Directory extends React.Component {
             return newObj;
         })
 
-        this.setState({ employees: people, loading: false });
+
+
+        this.setState({ employees: people, loading: false,});
         this.setState({ search: "" });
+
+        this.setState({ matchedEmployee: this.state.employees })
+
+     
 
 
     }
 
     handleInputChange = event => {
+        event.preventDefault();
+        console.log(this.state.employees)
         let value = event.target.value;
-        const search = event.target.name;
         console.log(value);
-        this.setState({ search: value });
-
+        let newArr= this.state.employees.filter(employee=>{
+           console.log(employee.firstName)
+           let name = employee.firstName.toLowerCase()
+            
+           if(name.indexOf(value) !== -1){
+           return employee
+       }
+        })
+        this.setState({ matchedEmployee: newArr })
     };
 
-    // search = row => {
-
-    
-    // return rows.filter(row => row.firstName.toLowerCase().indexof(this.state.search) > -1)
-
-    // }
-
-
     render() {
-        // if (this.state.loading) {
-        //     return <div>loadin...</div>;
-        // }
-        // if (!this.state.employees.length) {
-        //     return <div>didnt get person</div>;
-        // }
-
-    return (
-        <div>
-            {/* <div>
-                    <input type="text" vaule={search} onChange={(e) => this.state.search(e.target.value)} />
-                </div> */}
+       
+        return (
+            <div>
+          
             <SearchFrom
                 handleInputChange={this.handleInputChange}
                 value={this.state.search}
             />
             <EmployeeDataRow />
-            {this.state.employees.map(person => (
-                <EmployeeDataCard person={person}
 
-                />
-
-
-                // <div key={person.login.uuid}>
-
-                //     <img alt="self" src={person.picture} />
-                //     <div>{person.firstName}</div>
-                //     <div>{person.lastName}</div>
-                //     <div>{person.cell}</div>
-                //     <div>{person.dob}</div>
-                //     <div>{person.email}</div>
-                // </div>
+            {this.state.matchedEmployee.map(person => (
+            <EmployeeDataCard person={person} /> 
             ))}
 
-        </div>
-    )
-}
-
-
+            </div>
+        )
+    }
 }
