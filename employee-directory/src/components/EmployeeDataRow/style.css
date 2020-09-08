@@ -1,3 +1,9 @@
-col {
-    padding: 100px;
+.tables {
+    
+    padding: 500px;
+    background-color: red;
+};
+
+.col {
+    padding: 500px;
 }
