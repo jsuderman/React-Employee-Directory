@@ -1,102 +1,97 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-import Header from "../components/Header";
+import EmployeeDataCard from "../components/EmployeeDataCard";
 import SearchFrom from "../components/SearchFrom";
 import EmployeeDataRow from "../components/EmployeeDataRow";
-import EmployeeDataCard from "../components/EmployeeDataCard";
-// import { render } from "react-dom";
 
+export default class Directory extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            search: "",
+            loading: true,
+            employees: [],
+        };
+    }
+    async componentDidMount() {
+        const url = "https://randomuser.me/api/?results=10";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data.results)
 
+        const people = data.results.map(person => {
 
-class Directory extends Component {
-    state = {
-        search: "",
-        results: [],
-        error: null,
-    };
+            const newObj = {
+                email: person.email,
+                login: person.login.uuid,
+                firstName: person.name.first,
+                lastName: person.name.last,
+                picture: person.picture.medium,
+                dob: person.dob.date,
+                cell: person.cell
+            }
+            return newObj;
+        })
 
+        this.setState({ employees: people, loading: false });
+        this.setState({ search: "" });
 
-    componentDidMount() {
-        // API.GetEmployees()
-        //     .then(res => {
-        //         console.log(res.data.results)
-        //         // const results = res.data.results.map(obj => obj.data);
-        //         this.setState({ results: res.data.results });
-        //         console.log("this is update state")
-        //         console.log(this.state.results)
-        //     })
-        API.GetMultiEmployees()
-            .then(res => {
-                console.log(res.data.results)
-                this.setState({ results: res.data.results });
-                console.log("state updated")
-                console.log(this.state.results)
-
-            })
-    };
-
-    handleInputChange = event => {
-        let value = event.target.value;
-        const name = event.target.name;
-        console.log(value);
-        this.setState({
-            [name]: value
-        });
-    };
-
-
-    render() {
-        return (
-            <div>
-                <Header />
-                <SearchFrom 
-                    handleInputChange={this.handleInputChange}
-                />
-                <EmployeeDataRow />
-                <EmployeeDataCard />
-            </div>
-        )
 
     }
 
+    handleInputChange = event => {
+        let value = event.target.value;
+        const search = event.target.name;
+        console.log(value);
+        this.setState({ search: value });
+
+    };
+
+    // search = row => {
+
+    
+    // return rows.filter(row => row.firstName.toLowerCase().indexof(this.state.search) > -1)
+
+    // }
+
+
+    render() {
+        // if (this.state.loading) {
+        //     return <div>loadin...</div>;
+        // }
+        // if (!this.state.employees.length) {
+        //     return <div>didnt get person</div>;
+        // }
+
+    return (
+        <div>
+            {/* <div>
+                    <input type="text" vaule={search} onChange={(e) => this.state.search(e.target.value)} />
+                </div> */}
+            <SearchFrom
+                handleInputChange={this.handleInputChange}
+                value={this.state.search}
+            />
+            <EmployeeDataRow />
+            {this.state.employees.map(person => (
+                <EmployeeDataCard person={person}
+
+                />
+
+
+                // <div key={person.login.uuid}>
+
+                //     <img alt="self" src={person.picture} />
+                //     <div>{person.firstName}</div>
+                //     <div>{person.lastName}</div>
+                //     <div>{person.cell}</div>
+                //     <div>{person.dob}</div>
+                //     <div>{person.email}</div>
+                // </div>
+            ))}
+
+        </div>
+    )
+}
+
 
 }
-export default Directory;
-
-//             <div>
-//                 <Header />
-//                 <SearchFrom
-//                     handleInputChange={this.handleInputChange}
-//                 />
-//                 <EmployeeDataRow />
-//                 <EmployeeDataCard 
-//                     firstName={this.state.results.name}
-//                     lastName={this.state.results.name}
-//                     phone={this.state.results.phone}
-//                     email={this.state.results.email}
-//                     dob={this.state.results.dob}
-//                     picture={this.state.results.picture}
-
-
-//                 />
-//                     <div> {this.state.results.map(item => {
-//                         return <div key={item.phone}>
-//                                     phone: {item.phone}
-//                                     email: {item.email}
-//                                 )
-
-//                         </div>
-//                     })}
-
-//                     </div>
-
-
-//             </div>
-
-//         );
-//     };
-// }
-
-{/* <div>{item.picture.thumbnail}</div>
-                            <div> name: {item.name.first} {item.name.last} </div> 
-                            <div>DOB:{item.dob.date}</div> */}

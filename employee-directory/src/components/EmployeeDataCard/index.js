@@ -3,35 +3,21 @@ import "./style.css";
 
 
 function EmployeeDataCard(props) {
+    
     return (
         <div>
-            <table class="table table-striped">
-               
+            
+            <table cellPadding={0} cellSpacing={0} class="table table-striped">
                 <tbody>
                     <tr>
-                        <th scope="row"></th>
-                        <td>{props.name}</td>
-                        <td>{props.phone}</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <img alt="self" src={props?.person?.picture  || null} />
+                        <td>{props?.person?.firstName || ''} {props?.person?.lastName || ''}</td>
+                        <td>{props?.person?.cell || ''}</td>
+                        <td>{props?.person?.email || ''}</td>
+                        <td>{props?.person?.dob || ''}</td>
+                        
                     </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
