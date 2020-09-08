@@ -9,7 +9,6 @@ function SearchFrom(props) {
           <div class="form-group mx-sm-3 mb-2">
             <label for="search" class="sr-only">Search</label>
             <input
-            name="search"
             value={props.search} 
             onChange={props.handleInputChange}
             type="text" 
