@@ -7,7 +7,7 @@ function EmployeeDataCard(props) {
     return (
         <div>
             
-            <table cellPadding={0} cellSpacing={0} class="table table-striped">
+            <table cellPadding={0} cellSpacing={0} className="table table-striped">
                 <tbody>
                     <tr>
                         <img alt="self" src={props?.person?.picture  || null} />

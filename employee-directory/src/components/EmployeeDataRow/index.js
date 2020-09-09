@@ -4,7 +4,7 @@ import "./style.css"
 function EmployeeDataRow(props) {
     return (
         <div>
-            <table cellPadding={0} cellSpacing={0}  class="table table-striped">
+            <table cellPadding={0} cellSpacing={0}  className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Image</th>

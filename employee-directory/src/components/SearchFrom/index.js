@@ -4,17 +4,18 @@ import "./style.css"
 function SearchFrom(props) {
   return (
     <div>
-      <form class="form-inline">
+      <form className="form-inline">
         
-          <div class="form-group mx-sm-3 mb-2">
-            <label for="search" class="sr-only">Search</label>
+          <div className="form-group mx-sm-3 mb-2">
+            <label for="search" className="sr-only">Search</label>
             <input
             value={props.search} 
             onChange={props.handleInputChange}
             type="text" 
-            class="form-control" 
+            className="form-control" 
             id="employeeSearch" 
-            placeholder="Search"></input>
+            placeholder="Search">
+            </input>
           </div>
   
       </form>
