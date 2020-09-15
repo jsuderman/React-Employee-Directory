@@ -32,17 +32,10 @@ export default class Directory extends React.Component {
             }
             return newObj;
         })
-
-
-
+        
         this.setState({ employees: people, loading: false, });
         this.setState({ search: "" });
-
         this.setState({ matchedEmployee: this.state.employees })
-
-
-
-
     }
 
     handleInputChange = event => {
