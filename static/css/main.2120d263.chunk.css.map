@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA,WACI,SAAU,CAEV,iBACJ,CAAC,4BAFG,uBAQJ,CAVA,OACI,iBAEJ,CAHA,aACI,sBACJ,CAFA,QAGI,oBACJ,CAAA,CAEA,aAJI,aAMJ","file":"main.2120d263.chunk.css","sourcesContent":[".tables {\n    \n    padding: 500px;\n    background-color: red;\n};\n\n.col {\n    padding: 500px;\n}"]}
